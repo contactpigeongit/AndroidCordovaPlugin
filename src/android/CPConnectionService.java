@@ -404,6 +404,13 @@ public class CPConnectionService {
         postCartToCP(json, CPMainParameters.getInstance().isCartSelfContained);
     }
 
+    public void postCustomCart(List<CPMainParameters.CPCartItem> cartItems) {
+        String json = new Gson().toJson(cartItems);
+        printMsg(String.format("postCart json:%s)", json != null ? json : ""));
+
+        postCartToCP(json, CPMainParameters.getInstance().isCartSelfContained);
+    }
+
     public void emptyCart() {
         CPMainParameters.getInstance().curCartItems.clear();
         String json = new Gson().toJson(CPMainParameters.getInstance().curCartItems);
