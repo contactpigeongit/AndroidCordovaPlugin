@@ -1,6 +1,6 @@
 {
   "name": "cpandroidcordova",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Cordova Android SDK Contact Pigeon",
   "cordova": {
     "id": "com.contactpigeon.fbsdkconsumerplugin",

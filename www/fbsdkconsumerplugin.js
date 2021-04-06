@@ -44,8 +44,8 @@ exports.postCart = function (arg0, success, error) {
     exec(success, error, 'fbsdkconsumerplugin', 'postCart', [arg0]);
 };
 
-exports.postCustomCart = function (sku, name, qty, unitPrice, link, image, success, error) {
-    exec(success, error, 'fbsdkconsumerplugin', 'postCustomCart', [sku, name, qty, unitPrice, link, image]);
+exports.postCustomCart = function (customCarts, success, error) {
+    exec(success, error, 'fbsdkconsumerplugin', 'postCustomCart', [customCarts]);
 };
 
 exports.postContactEmail = function (cp_curEmail, utmp, success, error) {

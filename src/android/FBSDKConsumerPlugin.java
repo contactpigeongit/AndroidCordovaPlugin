@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class echoes a string called from JavaScript.
+ * This SDK callback between Clients and SDK library 
  */
 public class FBSDKConsumerPlugin extends CordovaPlugin {
     
@@ -130,14 +130,18 @@ public class FBSDKConsumerPlugin extends CordovaPlugin {
             });
             return true;
         } else if (action.equals("postCustomCart")) {
-            String sku = args.getString(0);
-            String name = args.getString(1);
-            int qty = args.getInt(2);
-            double unitPrice = args.getDouble(3);
-            String link = args.getString(4);
-            String image = args.getString(5);
+            JSONArray arrayCarts = args.getJSONArray(0);
             List<CPMainParameters.CPCartItem> cartItems = new ArrayList<>();
-            cartItems.add(new CPMainParameters.CPCartItem(sku, name, qty, unitPrice, link, image));
+            for (int i = 0; i < arrayCarts.length(); i++) {
+                JSONObject objectCart = arrayCarts.getJSONObject(i);
+                cartItems.add(new CPMainParameters.CPCartItem(
+                        objectCart.getString("sku"),
+                        objectCart.getString("name"),
+                        objectCart.getInt("qty"),
+                        objectCart.getDouble("unitPrice"),
+                        objectCart.getString("link"),
+                        objectCart.getString("image")));
+            }
             cordova.getActivity().runOnUiThread(new Runnable() {
                 public void run() {
                     cpConnector.postCustomCart(cartItems);
