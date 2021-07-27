@@ -153,8 +153,6 @@ public class FBSDKConsumerPlugin extends CordovaPlugin {
             String utmp = args.getString(1);
             cordova.getActivity().runOnUiThread(new Runnable() {
                     public void run() {
-                        String cp_curEmail = "test@test.gr";
-                        String utmp = "/myandroidapp/category/subcategory/mypage/";
                         cpConnector.setContactMail(cp_curEmail,utmp);
                     }
             });
